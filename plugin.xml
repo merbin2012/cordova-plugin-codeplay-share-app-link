@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='utf-8'?>
+<plugin id="cordova-plugin-codeplay-share-app-link" version="0.0.1" xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
+  <name>codeplayshareapplink</name>
+  <js-module name="codeplayshareapplink" src="www/codeplayshareapplink.js">
+    <clobbers target="cordova.plugins.codeplayshareapplink" />
+  </js-module>
+  <platform name="android">
+    <config-file parent="/*" target="res/xml/config.xml">
+      <feature name="codeplayshareapplink">
+        <param name="android-package" value="cordova.plugin.codeplay.share.app.link.codeplayshareapplink" />
+      </feature>
+    </config-file>
+    <config-file parent="/*" target="AndroidManifest.xml"></config-file>
+    <source-file src="src/android/codeplayshareapplink.java" target-dir="src/cordova/plugin/codeplay/share/app/link/codeplayshareapplink" />
+  </platform>
+</plugin>
