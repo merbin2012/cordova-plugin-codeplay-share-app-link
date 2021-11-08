@@ -1,6 +1,6 @@
 {
   "name": "cordova-plugin-codeplay-share-app-link",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "This app plugin is used to share your applink, developer links or other text messages with mobile contact details",
   "cordova": {
     "id": "cordova-plugin-codeplay-share-app-link",
@@ -15,6 +15,12 @@
   "keywords": [
     "ecosystem:cordova",
     "cordova-android"
+	,"share-app"
+	,"share"
+	,"share link"
+	,"share playstore link"
+	,"share whatsapp"
+	,"share email"
   ],
   "author": "Merbin Joe",
   "license": "ISC",
