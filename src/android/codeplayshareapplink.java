@@ -1,52 +1,34 @@
 package cordova.plugin.codeplay.share.app.link;
 
-import android.content.Context;
-import android.support.v4.app.ShareCompat;
+import android.content.Intent;
 
-import org.apache.cordova.CordovaPlugin;
+
 import org.apache.cordova.CallbackContext;
-
+import org.apache.cordova.CordovaPlugin;
 import org.json.JSONArray;
 import org.json.JSONException;
-import org.json.JSONObject;
 
-/**
- * This class echoes a string called from JavaScript.
- */
 public class codeplayshareapplink extends CordovaPlugin {
 
     @Override
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
-		
-            String shareTitle = args.getString(0);
-            String shareText = args.getString(1);
-		
-		
+
+        String shareTitle = args.getString(0);
+        String shareText = args.getString(1);
+
+
         if (action.equals("shareWithContact")) {
 
-            Context testParameter = (cordova.getActivity()).getBaseContext();
+            final String appPackageName = cordova.getActivity().getPackageName();
+            Intent sendIntent = new Intent();
+            sendIntent.setAction(Intent.ACTION_SEND);
+            sendIntent.putExtra(Intent.EXTRA_TEXT, shareText+" https://play.google.com/store/apps/details?id=" + appPackageName);
+            sendIntent.setType("text/plain");
+            cordova.getActivity().startActivity(Intent.createChooser(sendIntent, shareTitle));
 
-
-            ShareCompat.IntentBuilder
-                    .from(cordova.getActivity())
-                    .setText(shareText)
-                    .setType("text/plain")
-                    .setChooserTitle(shareTitle)
-                    .startChooser();
-			
-			callbackContext.success("Success");
-			
             return true;
         }
-		
-        return false;
-    }
 
-    private void coolMethod(String message, CallbackContext callbackContext) {
-        if (message != null && message.length() > 0) {
-            callbackContext.success(message);
-        } else {
-            callbackContext.error("Expected one non-empty string argument.");
-        }
+        return false;
     }
 }
