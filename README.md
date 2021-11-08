@@ -43,7 +43,7 @@ cordova.plugins.codeplayshareapplink.shareWithContact(title,message,success,fail
 
 ```javascript
 cordova.plugins.codeplayshareapplink.shareWithContact("Share via"
-,"Wonderful cordova learning app https://play.google.com/store/apps/details?id=cordova.code.play"
+,"Wonderful cordova learning app"
 ,success,fail);
 
 function success(result)
